@@ -67,7 +67,7 @@ public class JTableToExcelGUI extends JDialog {
          */
         JPanel panel = new JPanel(new GridLayout(4, 2));
         panel.setBorder(BorderFactory.createEmptyBorder(5, 5, 0, 5));
-        
+
         /**
          * JLabel and input field for first name
          */
@@ -101,7 +101,7 @@ public class JTableToExcelGUI extends JDialog {
         JButton insertButton = new JButton("Insert into table");
         insertButton.addActionListener(new InsertButtonListener());
         panel.add(insertButton);
-                
+
         return panel;
     }
 
@@ -214,7 +214,7 @@ public class JTableToExcelGUI extends JDialog {
         try (FileOutputStream fout = new FileOutputStream(file)) {
 
             Workbook wb = null;
-            if (file.getName().endsWith("xls")) {
+            if (file.getName().endsWith(".xls")) {
                 wb = new HSSFWorkbook();
             } else if (file.getName().endsWith(".xlsx")) {
                 wb = new XSSFWorkbook();
@@ -242,7 +242,7 @@ public class JTableToExcelGUI extends JDialog {
             }
             wb.write(fout);
 
-            if (JOptionPane.showConfirmDialog(null, 
+            if (JOptionPane.showConfirmDialog(null,
                     "Would you like to clear table?", "WARNING",
                     JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 tableModel.getDataVector().removeAllElements();
